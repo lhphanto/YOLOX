@@ -26,4 +26,8 @@ class Exp(MyExp):
         self.max_epoch = 30
         self.data_num_workers = 1
         self.eval_interval = 2
-        self.basic_lr_per_img = 0.01 / 16.0
+        self.basic_lr_per_img = 0.005 / 16.0
+        self.shear = 0.0
+        self.degrees = 0.0
+        self.no_aug_epochs = 5
+        self.multiscale_range = 0

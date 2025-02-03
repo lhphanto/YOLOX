@@ -362,6 +362,3 @@ class Trainer:
                 self.file_name,
                 ckpt_name,
             )
-
-            if self.args.logger == "wandb":
-                self.wandb_logger.save_checkpoint(self.file_name, ckpt_name, update_best_ckpt)
