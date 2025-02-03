@@ -53,6 +53,14 @@ class StreamToLoguru:
         else:
             sys.__stdout__.write(buf)
 
+    def isatty(self):
+        # when using colab, jax is installed by default and issue like
+        # https://github.com/Megvii-BaseDetection/YOLOX/issues/1437 might be raised
+        # due to missing attribute like`isatty`.
+        # For more details, checked the following link:
+        # https://github.com/google/jax/blob/10720258ea7fb5bde997dfa2f3f71135ab7a6733/jax/_src/pretty_printer.py#L54  # noqa
+        return sys.__stdout__.isatty()
+
     def flush(self):
         pass
 

@@ -40,8 +40,10 @@ class Exp(BaseExp):
         self.data_dir = None
         # name of annotation file for training
         self.train_ann = "instances_train2017.json"
+        self.train_name = "dummy"
         # name of annotation file for evaluation
         self.val_ann = "instances_val2017.json"
+        self.val_name = "dummy"
         # name of annotation file for testing
         self.test_ann = "instances_test2017.json"
 
@@ -143,6 +145,7 @@ class Exp(BaseExp):
             dataset = COCODataset(
                 data_dir=self.data_dir,
                 json_file=self.train_ann,
+                name=self.train_name,
                 img_size=self.input_size,
                 preproc=TrainTransform(
                     max_labels=50,
@@ -275,7 +278,7 @@ class Exp(BaseExp):
         valdataset = COCODataset(
             data_dir=self.data_dir,
             json_file=self.val_ann if not testdev else self.test_ann,
-            name="val2017" if not testdev else "test2017",
+            name=self.val_name,
             img_size=self.test_size,
             preproc=ValTransform(legacy=legacy),
         )
