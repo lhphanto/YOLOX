@@ -365,7 +365,7 @@ class Trainer:
             )
 
     def save_config(self):
-        config_file = os.path.join(self.filename, "hyp.txt")
-        with open(config_file) as f:
+        config_file = os.path.join(self.file_name, "hyp.txt")
+        with open(config_file, 'w') as f:
             f.write("args: {}\n".format(self.args))
             f.write("exp value:\n{}".format(self.exp))
