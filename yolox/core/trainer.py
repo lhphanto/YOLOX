@@ -129,6 +129,7 @@ class Trainer:
     def before_train(self):
         logger.info("args: {}".format(self.args))
         logger.info("exp value:\n{}".format(self.exp))
+        self.save_config()
 
         # model related init
         torch.cuda.set_device(self.local_rank)
@@ -362,3 +363,9 @@ class Trainer:
                 self.file_name,
                 ckpt_name,
             )
+
+    def save_config(self):
+        config_file = os.path.join(self.filename, "hyp.txt")
+        with open(config_file) as f:
+            f.write("args: {}\n".format(self.args))
+            f.write("exp value:\n{}".format(self.exp))
